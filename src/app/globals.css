@@ -298,5 +298,144 @@ h1, h2, h3, h4, h5, h6 {
   
   .urban-container {
     margin: 1rem;
+    padding: 1rem !important;
+  }
+  
+  /* Mobile button sizes */
+  .street-button {
+    width: 3rem !important;
+    height: 3rem !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .street-button.play-button {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .loop-button {
+    width: 3rem !important;
+    height: 3rem !important;
+    font-size: 1.25rem !important;
+  }
+  
+  /* Mobile album art */
+  .mobile-album-art {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  /* Mobile track card images */
+  .mobile-track-image {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  /* Mobile text sizes */
+  .mobile-track-title {
+    font-size: 2rem !important;
+  }
+  
+  .mobile-track-album {
+    font-size: 1rem !important;
+  }
+  
+  .mobile-track-info {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Mobile section title */
+  .mobile-section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Mobile track cards */
+  .track-card {
+    padding: 0.75rem !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Mobile header adjustments */
+  .mobile-header-subtitle {
+    font-size: 1rem !important;
+    gap: 1rem !important;
+  }
+  
+  .mobile-header-subtitle span {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Mobile spacing */
+  .mobile-spacing {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mobile-control-spacing {
+    gap: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .seedhe-glow {
+    font-size: 2rem;
+  }
+  
+  .urban-container {
+    padding: 0.75rem !important;
+    margin: 0.5rem !important;
+  }
+  
+  /* Extra small mobile buttons */
+  .street-button {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .street-button.play-button {
+    width: 3rem !important;
+    height: 3rem !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .loop-button {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Extra small album art */
+  .mobile-album-art {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  /* Smaller track cards */
+  .track-card {
+    padding: 0.5rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .mobile-track-image {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+  
+  .mobile-track-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .mobile-section-title {
+    font-size: 1.25rem !important;
+  }
+  
+  .mobile-header-subtitle {
+    font-size: 0.875rem !important;
+  }
+  
+  .mobile-header-subtitle span {
+    font-size: 1rem !important;
   }
 }

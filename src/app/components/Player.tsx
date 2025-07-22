@@ -186,7 +186,7 @@ export default function Player() {
  
 
   return (
-    <div className="min-h-screen w-full max-w-7xl mx-auto px-4 py-8 md:py-12 relative">
+    <div className="min-h-screen w-full max-w-7xl mx-auto px-4 md:px-4 sm:px-2 py-8 md:py-12 sm:py-6 relative">
       {/* Audio Element with better configuration */}
       <audio
         ref={audioRef}
@@ -196,17 +196,17 @@ export default function Player() {
       />
       
       {/* TBSM Branding */}
-      <div className="tbsm-brand">TBSM</div>
+      <div className="tbsm-brand text-sm md:text-sm sm:text-xs">TBSM</div>
       
       {/* Background street pattern */}
       <div className="fixed inset-0 street-pattern opacity-10 pointer-events-none" />
 
       {/* Header */}
-      <header className="text-center mb-16 relative">
+      <header className="text-center mb-16 mobile-spacing relative">
         <h1 className="seedhe-glow text-6xl md:text-8xl font-black tracking-wider mb-6">
           SEEDHE MAUT
         </h1>
-        <div className="flex items-center justify-center gap-8 text-xl md:text-3xl mb-4">
+        <div className="mobile-header-subtitle flex items-center justify-center gap-8 text-xl md:text-3xl mb-4">
           <span className="hindi-text text-2xl md:text-4xl">सीधे मौत</span>
           <span className="text-gray-400">×</span>
           <span className="text-orange-400 font-bold tracking-widest">NON STOP</span>
@@ -219,9 +219,9 @@ export default function Player() {
       {/* Main Player */}
       <main className="urban-container p-8 md:p-12 mb-8">
         {/* Current Track Display */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8 sm:gap-6 mb-16 mobile-spacing">
           {/* Album Art */}
-          <div className="relative w-80 h-80 group anime-glow">
+          <div className="mobile-album-art relative w-80 h-80 group anime-glow">
             <div className="absolute inset-0 rounded-lg overflow-hidden border-4 border-transparent bg-gradient-to-r from-cyan-500 to-orange-500 p-1">
               <div className="w-full h-full rounded-lg overflow-hidden bg-black">
                 <Image
@@ -238,7 +238,7 @@ export default function Player() {
                 {/* Loading indicator */}
                 {isLoading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                    <div className="text-cyan-400 animate-pulse">Loading...</div>
+                    <div className="text-orange-400 animate-pulse text-sm md:text-base">Loading...</div>
                   </div>
                 )}
               </div>
@@ -246,23 +246,23 @@ export default function Player() {
             
             {/* Vinyl record effect */}
             {currentTrack && (
-              <div className={`absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 bg-black rounded-full border-4 border-orange-400 opacity-80 transition-transform ${
+              <div className={`absolute top-1/2 left-1/2 w-16 h-16 md:w-16 md:h-16 sm:w-12 sm:h-12 -translate-x-1/2 -translate-y-1/2 bg-black rounded-full border-4 border-orange-400 opacity-80 transition-transform ${
                 isPlaying ? 'animate-spin' : ''
               }`}>
-                <div className="absolute top-1/2 left-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 bg-orange-400 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 w-4 h-4 md:w-4 md:h-4 sm:w-3 sm:h-3 -translate-x-1/2 -translate-y-1/2 bg-orange-400 rounded-full"></div>
               </div>
             )}
           </div>
 
           {/* Track Info & Controls */}
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-orange-400">
+            <h2 className="mobile-track-title text-4xl md:text-5xl font-black mb-4 text-orange-400">
               {currentTrack?.title || 'SELECT TRACK'}
             </h2>
-            <div className="text-xl md:text-2xl text-gray-400 mb-2">
+            <div className="mobile-track-album text-xl md:text-2xl text-gray-400 mb-2">
               {currentTrack?.album || 'Choose your poison'}
             </div>
-            <div className="text-orange-400 text-lg mb-8 font-mono">
+            <div className="mobile-track-info text-orange-400 text-lg mb-8 font-mono">
               {currentTrack?.year && `${currentTrack.year} • `}
      
               {currentTrack?.artists && (
@@ -273,7 +273,7 @@ export default function Player() {
             </div>
 
             {/* Main Controls */}
-            <div className="flex items-center justify-center lg:justify-start gap-6 mb-8">
+            <div className="mobile-control-spacing flex items-center justify-center lg:justify-start gap-6 mb-8">
               {/* Previous Button */}
               <button
                 className="street-button w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -285,7 +285,7 @@ export default function Player() {
               
               {/* Play/Pause Button */}
               <button
-                className="street-button w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="street-button play-button w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 onClick={handlePlayPause}
                 disabled={!currentTrack || isLoading}
               >
@@ -316,14 +316,14 @@ export default function Player() {
 
         {/* Track List */}
         <section>
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-3xl font-black text-orange-400 uppercase tracking-wider">
+          <div className="flex items-center justify-between mb-8 mobile-spacing">
+            <h3 className="mobile-section-title text-3xl font-black text-orange-400 uppercase tracking-wider">
               FEATURED TRACKS
             </h3>
-            <div className="hindi-text text-lg">ट्रैक लिस्ट</div>
+            <div className="hindi-text text-lg md:text-lg sm:text-base">ट्रैक लिस्ट</div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:gap-4 sm:gap-3">
             {displayedTracks.map((track, index) => (
               <button
                 key={track.id}
@@ -332,7 +332,7 @@ export default function Player() {
                 }`}
                 onClick={() => handleTrackSelect(track)}
               >
-                <div className="relative w-16 h-16 rounded overflow-hidden border-2 border-gray-600 group-hover:border-orange-400 transition-colors">
+                <div className="mobile-track-image relative w-16 h-16 rounded overflow-hidden border-2 border-gray-600 group-hover:border-orange-400 transition-colors">
                   <Image
                     src={track.cover}
                     alt={track.title}
@@ -346,7 +346,7 @@ export default function Player() {
                     <span className="text-orange-400 font-mono text-sm font-bold">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <div className="font-bold text-lg group-hover:text-orange-400 transition-colors">
+                    <div className="font-bold text-lg md:text-lg sm:text-base group-hover:text-orange-400 transition-colors">
                       {track.title}
                     </div>
                   </div>
@@ -359,9 +359,9 @@ export default function Player() {
                 {/* Playing indicator */}
                 {currentTrack?.id === track.id && isPlaying && (
                   <div className="flex items-center gap-1">
-                    <div className="w-1 h-4 bg-orange-400 animate-pulse"></div>
-                    <div className="w-1 h-6 bg-orange-400 animate-pulse delay-100"></div>
-                    <div className="w-1 h-3 bg-orange-400 animate-pulse delay-200"></div>
+                    <div className="w-1 h-4 md:h-4 sm:h-3 bg-orange-400 animate-pulse"></div>
+                    <div className="w-1 h-6 md:h-6 sm:h-4 bg-orange-400 animate-pulse delay-100"></div>
+                    <div className="w-1 h-3 md:h-3 sm:h-2 bg-orange-400 animate-pulse delay-200"></div>
                   </div>
                 )}
               </button>

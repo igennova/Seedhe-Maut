@@ -22,7 +22,7 @@ export default function Home() {
         
         {/* City silhouette - Delhi skyline */}
         <div 
-          className="absolute bottom-0 left-0 right-0 h-80 bg-[url('/city.svg')] bg-repeat-x opacity-25 animate-slide"
+          className="absolute bottom-0 left-0 right-0 h-80 md:h-80 sm:h-40 bg-[url('/city.svg')] bg-repeat-x opacity-25 animate-slide"
           style={{ backgroundSize: 'auto 100%' }}
         />
         
