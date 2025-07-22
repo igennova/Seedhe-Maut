@@ -1,26 +1,302 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-family-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-family-orbitron: var(--font-orbitron), monospace;
+  
+  /* Seedhe Maut Color Palette - Orange Primary */
+  --color-neon-orange: #ff4500;
+  --color-neon-blue: #00d9ff;
+  --color-electric-orange: #ff6600;
+  --color-street-yellow: #ffff00;
+  --color-metal-silver: #c0c0c0;
+  --color-blood-red: #ff0000;
+  --color-deep-orange: #ff8c00;
+  
+  /* Urban textures */
+  --color-concrete: #2a2a2a;
+  --color-rust: #8b4513;
+  --color-steel: #4a4a4a;
+  
+  --animate-slide: slide 30s linear infinite;
+  --animate-float: float 15s ease-in-out infinite;
+  --animate-glitch: glitch 0.3s cubic-bezier(.25,.46,.45,.94) infinite;
+  --animate-pulse-neon: pulse-neon 2s ease-in-out infinite alternate;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes slide {
+  0% { background-position: 0 0; }
+  100% { background-position: -2000px 0; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-20px) rotate(-1deg); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  10% { transform: translate(-2px, 2px); }
+  20% { transform: translate(-2px, -2px); }
+  30% { transform: translate(2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  50% { transform: translate(-1px, 2px); }
+  60% { transform: translate(-1px, -2px); }
+  70% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  90% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes pulse-neon {
+  from { 
+    text-shadow: 
+      0 0 5px var(--color-neon-orange),
+      0 0 10px var(--color-neon-orange),
+      0 0 15px var(--color-neon-orange),
+      0 0 20px var(--color-neon-orange);
+  }
+  to { 
+    text-shadow: 
+      0 0 10px var(--color-neon-orange),
+      0 0 20px var(--color-neon-orange),
+      0 0 30px var(--color-neon-orange),
+      0 0 40px var(--color-electric-orange);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 69, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: white;
+  font-family: var(--font-family-sans);
+  overflow-x: hidden;
+}
+
+/* Typography - Bold and street-inspired */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-orbitron);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+/* Seedhe Maut signature glow */
+.seedhe-glow {
+  color: var(--color-neon-orange);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    0 0 5px var(--color-neon-orange),
+    0 0 10px var(--color-neon-orange),
+    0 0 15px var(--color-neon-orange),
+    0 0 20px var(--color-electric-orange),
+    2px 2px 0px var(--color-steel);
+  animation: var(--animate-pulse-neon);
+}
+
+/* Urban container styling */
+.urban-container {
+  position: relative;
+  background: 
+    linear-gradient(135deg, rgba(255, 69, 0, 0.05) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(255, 140, 0, 0.05) 0%, transparent 50%),
+    rgba(26, 26, 26, 0.8);
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 0 20px rgba(255, 69, 0, 0.3),
+    0 0 40px rgba(255, 140, 0, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.urban-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--color-neon-orange), var(--color-electric-orange), var(--color-deep-orange));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* Delhi street vibes background pattern */
+.street-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 69, 0, 0.1) 2px,
+      rgba(255, 69, 0, 0.1) 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 140, 0, 0.05) 2px,
+      rgba(255, 140, 0, 0.05) 4px
+    );
+}
+
+/* Gritty button styling */
+.street-button {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-steel) 0%, var(--color-concrete) 100%);
+  border: 2px solid var(--color-neon-orange);
+  color: var(--color-neon-orange);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 10px rgba(255, 69, 0, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.street-button:hover {
+  background: linear-gradient(135deg, var(--color-neon-orange) 0%, var(--color-electric-orange) 100%);
+  color: black;
+  box-shadow: 
+    0 0 20px var(--color-neon-orange),
+    0 0 30px var(--color-electric-orange),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+  animation: var(--animate-glitch);
+}
+
+.street-button:active {
+  transform: scale(0.95);
+}
+
+/* Loop button special styling */
+.loop-button {
+  position: relative;
+  background: rgba(255, 140, 0, 0.1);
+  border: 2px solid var(--color-deep-orange);
+  color: var(--color-deep-orange);
+  transition: all 0.3s ease;
+}
+
+.loop-button.active {
+  background: var(--color-deep-orange);
+  color: black;
+  box-shadow: 
+    0 0 20px var(--color-deep-orange),
+    0 0 30px var(--color-street-yellow);
+}
+
+.loop-button:hover {
+  animation: var(--animate-glitch);
+}
+
+/* Track card with cassette/vinyl inspiration */
+.track-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: 
+    linear-gradient(135deg, rgba(255, 69, 0, 0.05) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(255, 140, 0, 0.05) 0%, transparent 50%),
+    rgba(42, 42, 42, 0.8);
+  border: 1px solid rgba(255, 69, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 69, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.track-card:hover {
+  background: 
+    linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+    rgba(74, 74, 74, 0.9);
+  border-color: var(--color-neon-orange);
+  box-shadow: 
+    0 0 20px rgba(255, 69, 0, 0.3),
+    0 0 30px rgba(255, 140, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.track-card:hover::before {
+  left: 100%;
+}
+
+/* Hindi text styling */
+.hindi-text {
+  font-family: 'Devanagari Sangam MN', 'Noto Sans Devanagari', serif;
+  font-weight: 700;
+  color: var(--color-street-yellow);
+  text-shadow: 
+    0 0 10px var(--color-street-yellow),
+    2px 2px 0px var(--color-rust);
+}
+
+/* TBSM branding */
+.tbsm-brand {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-family-orbitron);
+  font-weight: 900;
+  font-size: 0.875rem;
+  color: var(--color-metal-silver);
+  opacity: 0.6;
+  letter-spacing: 0.2em;
+}
+
+/* Anime-inspired effects */
+.anime-glow {
+  position: relative;
+}
+
+.anime-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, var(--color-neon-orange), var(--color-electric-orange), var(--color-deep-orange));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: var(--animate-glitch) infinite;
+}
+
+.anime-glow:hover::after {
+  opacity: 0.7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .seedhe-glow {
+    font-size: 2.5rem;
+  }
+  
+  .track-card {
+    padding: 1rem;
+  }
+  
+  .urban-container {
+    margin: 1rem;
+  }
 }
